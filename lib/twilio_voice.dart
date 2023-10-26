@@ -1,7 +1,7 @@
 library twilio_voice;
 
-import 'dart:async';
 import 'dart:convert';
+
 import 'package:flutter/services.dart';
 
 part 'models/active_call.dart';
@@ -11,7 +11,7 @@ typedef OnDeviceTokenChanged = Function(String token);
 
 class TwilioVoice {
   static const MethodChannel _channel =
-      const MethodChannel('twilio_voice/messages');
+      MethodChannel('twilio_voice/messages');
 
   static const EventChannel _eventChannel = EventChannel('twilio_voice/events');
 
