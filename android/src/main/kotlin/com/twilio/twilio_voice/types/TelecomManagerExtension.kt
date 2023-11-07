@@ -94,7 +94,7 @@ object TelecomManagerExtension {
         Log.e("name","class $name")
         if (!canReadPhoneState(ctx)) return false
         Log.e("nde","aj")
-        val enabledAccounts: List<PhoneAccountHandle> = it.callCapablePhoneAccounts
+        val enabledAccounts: List<PhoneAccountHandle> = callCapablePhoneAccounts
         for (account in enabledAccounts) {
             Log.e("nesto","class $account")
         }
