@@ -91,13 +91,7 @@ object TelecomManagerExtension {
      */
     @RequiresPermission(value = "android.permission.READ_PHONE_STATE")
     fun TelecomManager.hasCallCapableAccount(ctx: Context, name: String): Boolean {
-        Log.e("name","class $name")
         if (!canReadPhoneState(ctx)) return false
-        Log.e("nde","aj")
-        val enabledAccounts: List<PhoneAccountHandle> = callCapablePhoneAccounts
-        for (account in enabledAccounts) {
-            Log.e("nesto","class $account")
-        }
         return callCapablePhoneAccounts.any { it.componentName.className == name }
     }
 
