@@ -385,7 +385,7 @@ class TVConnectionService : ConnectionService() {
                     }
 
                     val phoneAccount = telecomManager.getPhoneAccount(phoneAccountHandle)
-                    Log.d("phoneAccount",phoneAccount)
+
                     if(phoneAccount == null) {
                         Log.e(TAG, "onStartCommand: PhoneAccount is null, make sure to register one with `registerPhoneAccount()`")
                         return@let
@@ -412,8 +412,6 @@ class TVConnectionService : ConnectionService() {
                     }
 
                     val address: Uri = Uri.fromParts(PhoneAccount.SCHEME_TEL, to, null)
-                    Log.d("address",address)
-                    Log.d("extras",extras)
                     telecomManager.placeCall(address, extras)
                 }
 
