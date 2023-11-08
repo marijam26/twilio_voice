@@ -1016,12 +1016,14 @@ class TwilioVoicePlugin : FlutterPlugin, MethodCallHandler, EventChannel.StreamH
                 Log.e(TAG, "No microphone permission, call `requestMicrophonePermission()` first")
                 return false
             }
-            requestPermissionForPhoneState()
+            requestPermissionForPhoneState() { granted ->
+                result.success(granted)
+            }
             if (!checkReadPhoneNumbersPermission()) {
                 Log.e(TAG, "No read phone state permission, call `requestReadPhoneStatePermission()` first")
                 return false
             }
-            requestCallPhonePermission()
+
             if (!checkCallPhonePermission()) {
                 Log.e(TAG, "No call phone permission, call `requestCallPhonePermission()` first")
                 return false
@@ -1100,7 +1102,9 @@ class TwilioVoicePlugin : FlutterPlugin, MethodCallHandler, EventChannel.StreamH
                 // Get PhoneAccountHandle
                 val phoneAccountHandle = tm.getPhoneAccountHandle(ctx)
 
-                requestPermissionForReadPhoneNumbers()
+                requestPermissionForReadPhoneNumbers() { granted ->
+                    result.success(granted)
+                }
                 if (!tm.canReadPhoneNumbers(ctx)) {
                     Log.e(TAG, "hasRegisteredPhoneAccount: No read phone numbers permission, call `requestReadPhoneNumbersPermission()` first")
                     return false;
