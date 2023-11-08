@@ -353,6 +353,8 @@ class TVConnectionService : ConnectionService() {
                     outGoingParams?.keySet()?.forEach { key ->
                         outGoingParams.getString(key)?.let { value ->
                             params[key] = value
+                            Log.d("nesto",value)
+                            Log.d("key",key)
                         }
                     }
 
@@ -360,6 +362,10 @@ class TVConnectionService : ConnectionService() {
                     params[EXTRA_FROM] = from
                     params[EXTRA_TO] = to
                     params[EXTRA_TOKEN] = token
+
+                    Log.d("from",from)
+                    Log.d("to",to)
+                    Log.d("token",token)
 
                     // Create Twilio Param bundles
                     val myBundle = Bundle().apply {
@@ -379,6 +385,7 @@ class TVConnectionService : ConnectionService() {
                     }
 
                     val phoneAccount = telecomManager.getPhoneAccount(phoneAccountHandle)
+                    Log.d("phoneAccount",phoneAccount)
                     if(phoneAccount == null) {
                         Log.e(TAG, "onStartCommand: PhoneAccount is null, make sure to register one with `registerPhoneAccount()`")
                         return@let
@@ -405,6 +412,8 @@ class TVConnectionService : ConnectionService() {
                     }
 
                     val address: Uri = Uri.fromParts(PhoneAccount.SCHEME_TEL, to, null)
+                    Log.d("address",address)
+                    Log.d("extras",extras)
                     telecomManager.placeCall(address, extras)
                 }
 

@@ -114,6 +114,7 @@ object TelecomManagerExtension {
      * @return Boolean True if the app has the READ_PHONE_STATE permission
      */
     fun TelecomManager.canReadPhoneState(ctx: Context): Boolean {
+        Log.d("ctx",ctx)
         return ctx.hasReadPhoneStatePermission()
     }
 

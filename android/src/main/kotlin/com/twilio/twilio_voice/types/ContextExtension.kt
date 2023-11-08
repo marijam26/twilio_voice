@@ -58,6 +58,7 @@ object ContextExtension {
      * @return Boolean True if the permission is granted
      */
     fun Context.checkPermission(permission: String): Boolean {
+        Log.d("permission",permission)
         return PermissionChecker.checkSelfPermission(this, permission) == PermissionChecker.PERMISSION_GRANTED
     }
 }
