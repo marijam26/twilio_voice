@@ -1006,6 +1006,8 @@ class TwilioVoicePlugin : FlutterPlugin, MethodCallHandler, EventChannel.StreamH
         Log.d("to",to)
 
         telecomManager?.let { tm ->
+            registerPhoneAccount()
+
             if (!tm.hasCallCapableAccount(ctx, TVConnectionService::class.java.name)) {
                 Log.e(TAG, "No registered phone account, call `registerPhoneAccount()` first")
                 return false
